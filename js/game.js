@@ -46,7 +46,7 @@ function createEvilButton() {
 
 function createGoodBotton() {
     const randomLink = good_links[Math.floor(Math.random() * good_links.length)];
-    const response = '<a id="btn1" target="_blank" href="' + window.location + '"/download/myfile.mp4" type="button" class="' + randomLink + '">Download</a>'
+    const response = '<a id="btn1" target="_blank" href="https://mystifying-northcutt-fd448f.netlify.app/download/myfile.mp4" type="button" class="' + randomLink + '">Download</a>'
     return response;
 }
 

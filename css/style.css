@@ -2433,7 +2433,7 @@ h5,
   position: relative;
 }
 
-#game .main{
+#game .main {
   background-color: #f0f0f0;
   padding: 100px 50px;
   border-radius: 25px;
@@ -2443,7 +2443,7 @@ h5,
   text-decoration: none;
 }
 
-#retry{
+#retry {
   position: absolute;
   background-color: #000;
   opacity: 0.7;
@@ -2452,7 +2452,7 @@ h5,
   top: 0;
 }
 
-#retry > div {
+#retry>div {
   z-index: 99;
   height: 100%;
 }
