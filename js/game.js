@@ -10,10 +10,6 @@ const evil_links = [
     'https://geektyper.com/hey/',
     'https://geektyper.com/hey/',
     'https://geektyper.com/hey/',
-    'https://www.youtube.com/watch?v=gAjR4_CbPpQ',
-    'https://www.youtube.com/watch?v=htgr3pvBr-I',
-    'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
     'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
 ];
 
@@ -46,7 +42,7 @@ function createEvilButton() {
 
 function createGoodBotton() {
     const randomLink = good_links[Math.floor(Math.random() * good_links.length)];
-    const response = '<a id="btn1" target="_blank" onclick="btn1Click();" href="https://mystifying-northcutt-fd448f.netlify.app/download/myfile.mp4" type="button" class="' + randomLink + '">Download</a>'
+    const response = '<a id="btn1" href="#/myfile.mp4" onclick="btn1Click();" type="button" class="' + randomLink + '">Download</a>'
     return response;
 }
 
@@ -79,11 +75,13 @@ function init() {
         Math.floor(Math.random() * Math.floor(4))
     }
 }
-init()
+
+$(document).ready(function () {
+    init()
+})
 
 function btn0Click() {
     init()
-    const randomLink = evil_links[Math.floor(Math.random() * evil_links.length)];
     Swal.fire({
         title: 'Botão errado!',
         text: 'Você foi hackeado',
