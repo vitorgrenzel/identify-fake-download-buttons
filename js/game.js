@@ -40,13 +40,13 @@ const good_links = [
 function createEvilButton() {
     const randomLink = evil_links[Math.floor(Math.random() * evil_links.length)];
     const randomImage = Math.floor(Math.random() * 12) + '.jpg';
-    const response = `<a id="btn0" target="_blank" href="${randomLink}"><img class="img-fluid" src="images/game/${randomImage}"></a>`
+    const response = `<a id="btn0" target="_blank" onclick="btn0Click();" href="${randomLink}"><img class="img-fluid" src="images/game/${randomImage}"></a>`
     return response;
 }
 
 function createGoodBotton() {
     const randomLink = good_links[Math.floor(Math.random() * good_links.length)];
-    const response = '<a id="btn1" target="_blank" href="https://mystifying-northcutt-fd448f.netlify.app/download/myfile.mp4" type="button" class="' + randomLink + '">Download</a>'
+    const response = '<a id="btn1" target="_blank" onclick="btn1Click();" href="https://mystifying-northcutt-fd448f.netlify.app/download/myfile.mp4" type="button" class="' + randomLink + '">Download</a>'
     return response;
 }
 
@@ -57,39 +57,47 @@ function init() {
     for (let i = 0; i < 4; i++) {
         let newButton = document.getElementById("slot" + i)
 
-        // Math.floor(Math.random() * 5)%2 && 
-        if (!goodButton) {
+        if (i == 3 && !goodButton) {
+            newButton.innerHTML = createGoodBotton()
+        } else if (Math.floor(Math.random() * Math.floor(4)) == i && !goodButton) {
+            newButton.innerHTML = createGoodBotton()
+            goodButton = !goodButton
+        } else if (Math.floor(Math.random() * Math.floor(4)) == i && !goodButton) {
+            newButton.innerHTML = createGoodBotton()
+            goodButton = !goodButton
+        }
+        else if (Math.floor(Math.random() * Math.floor(4)) == i && !goodButton) {
+            newButton.innerHTML = createGoodBotton()
+            goodButton = !goodButton
+        }
+        else if (Math.floor(Math.random() * Math.floor(4)) == i && !goodButton) {
             newButton.innerHTML = createGoodBotton()
             goodButton = !goodButton
         } else {
             newButton.innerHTML = createEvilButton()
         }
+        Math.floor(Math.random() * Math.floor(4))
     }
 }
 init()
 
+function btn0Click() {
+    init()
+    const randomLink = evil_links[Math.floor(Math.random() * evil_links.length)];
+    Swal.fire({
+        title: 'Botão errado!',
+        text: 'Você foi hackeado',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+    })
+}
 
-window.onload = function () {
-    document.getElementById("btn0").onclick = function (e) {
-        init()
-        const randomLink = evil_links[Math.floor(Math.random() * evil_links.length)];
-        Swal.fire({
-            title: 'Botão errado!',
-            text: 'Você foi hackeado',
-            icon: 'error',
-            confirmButtonText: 'Ok',
-        })
-    };
-
-    document.getElementById("btn1").onclick = function (e) {
-        init()
-        e.preventDefault()
-        Swal.fire({
-            title: 'Botão certo!',
-            text: 'Parabéns, você acertou',
-            icon: 'success',
-            confirmButtonText: 'Ok',
-        })
-    };
-};
-
+function btn1Click() {
+    init()
+    Swal.fire({
+        title: 'Botão certo!',
+        text: 'Parabéns, você acertou',
+        icon: 'success',
+        confirmButtonText: 'Ok',
+    })
+}
